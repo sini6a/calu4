@@ -1,18 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-  <h2>Welcome, {{ user.username }}!</h2>
-    {% else %}
-    <h2>Please register or login to donate.</h2>
-    {% endif %}
-  <ul>
-    {% for item in project_list %}
-    <li><a href="/projects/{{ item.project_id }}">{{ item }}</a></li>
-    {% endfor %}
-  </ul>
+<div style="width: 100%; float: left; text-align: center;">
+<h2>Statistics</h2>
+<div style="display: inline;">
+    <div style="width: 50%; float: left">
+    <h3>Total Projects:</h3>
+    <p style="color: green; font-size: 48px; margin-top: 0px;">{{ last_project_id }}</p>
+</div>
+<div style="width: 50%; float: left;">
+    <h3>Total Donated:</h3>
+<p style="color: green; font-size: 48px; margin-top: 0px;">{{ total_donated }}$</p>
+</div>
+</div>
+</div>
+
+<div style="width: 100%; float: left; text-align: center;">
+<h2>Projects</h2>
+  {% for item in project_list %}
+  <center><div style="width: 31.33%; float:left; border: 1px solid; margin: 1%; border-color: green; ">
+        <div  style="border-bottom: dashed 1px; margin: 5px; padding: 5px; border-color: green;">
+            <h3>{{ item }}</h3>
+            <p>{{ item.project_Date }}</p>
+        </div>
+        <div style="margin: 5px; padding: 5px; text-align: left;">
+            <p>Project Location: {{ item.project_Location }}</p>    
+            <p>Project Goal: {{ item.project_Goal }}$</p>
+            <p>Project Reach: {{ item.project_Reach }}$</p>
+            <form action="/projects/{{ item.project_id }}">
+                <center><input type="submit" value="Donate"></center>
+            </form>
+        </div>
+  </div></center>
+  {% endfor %}
+</div>
+
+
+<div style="width: 100%; float: left;">  
+<h2>Donations</h2>
   <table style="">
     <table style="float: left; width: 33.33%; padding: 20px;">
+        <th style="text-align: right;">Username</th>
     {% for user in users %}
     <tr>    
         <td style="text-align: right;">{{ user }}</td>
@@ -20,13 +48,15 @@
     {% endfor %}
     </table>
     <table style="float: left; width: 33.33%; padding: 20px;">
+        <th><br></th>
     {% for user in users %}
     <tr>    
-        <td style="text-align: center;"><- donated to -></td>
+        <td style="text-align: center; color: green;">donated to</td>
     </tr>
     {% endfor %}
     </table>
     <table style="float: left; width: 33.33%; padding: 20px;">
+    <th style="text-align: left;">Project</th>
     {% for project in projects %}
     <tr>
         <td style="text-align: left;">{{ project }}</td>
@@ -34,8 +64,8 @@
     {% endfor %}
     </table>
     </table>
-
-
+</div>
+        
 <!--
   <div>
     {% if donations %}

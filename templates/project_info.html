@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-  <h2>Welcome, {{ user.username }}!</h2>
-    {% else %}
-    <h2>Please register or login to donate.</h2>
-    {% endif %}
   <div>
     {% if project_list %}
-        <table>
+<!--
+        <table style="width: 100%;">
             <tr><th>{{ project_list.project_Name }}</th>
             </tr>
-            <tr><td>Date:</td>
+            <tr><td style="border: 1px solid;">Date:</td>
                 <td>{{ project_list.project_Date }}</td>
             </tr>
             <tr><td>Project Location:</td>
@@ -27,13 +23,37 @@
                 <td>{{ project_list.project_Reach }}</td>
             </tr>
         </table>
+-->
+
+        <h3>{{ project_list.project_Name }}</h3>
+        <div style="">
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Date:</p>
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Date }}</p>
+        </div>
+
+        <div style="">
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Project Location:</p>
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Location }}</p>
+        </div>
+        <div style="">
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Project Goal:</p>
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Goal }}</p>
+        </div>
+        <div style="">
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Project Reach:</p>
+            <p style="float:left; width: 50%;border-bottom: 1px dashed;border-color: green;">{{ project_list.project_Reach }}</p>
+        </div>
+        <div style="">
+            <p style="float:left; width: 50%;border-bottom: 1px dashed;border-color: green;">Project Info:</p>
+            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Info }}</p>
+        </div>
         {% if user.is_authenticated %}
         {% if project_list.project_Reach < project_list.project_Goal %}
-        <form method="post">
+        <center><form method="post" style="margin: 10px;">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Donate" />
-        </form>
+        </form></center>
         {% else %}
         <p>Project Goal is Reached. Thank you.</p>
         {% endif %}

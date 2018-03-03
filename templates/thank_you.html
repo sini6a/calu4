@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-  <h2>Welcome, {{ user.username }}!</h2>
-    {% else %}
-    <h2>Please register or login to donate.</h2>
-    {% endif %}
   <div>
-    <h2>Thank you for donating, {{ user.username }}!</h2>
+    <h2 style="color: green;">Thank you for donating, {{ user.username }}!</h2>
   </div>
 {% endblock %}

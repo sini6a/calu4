@@ -16,6 +16,14 @@ def index(request):
     projects = Project.objects.all().values_list('project_Name', flat=True)
     user_ids = Donation.objects.all().values_list('user_Id', flat=True)
     users = User.objects.all().values_list('username', flat=True)
+    
+    last_project_id = Project.objects.latest('project_id').project_id
+    
+    final_donated = 0
+    total_donated = Donation.objects.all().values_list('donated', flat=True)
+    
+    for value in total_donated:
+        final_donated = final_donated + value
         
     for project in project_ids:
         tempvar = Project.objects.get(pk=project).project_Name
@@ -33,6 +41,8 @@ def index(request):
         'project_list': project_list,
         'users': korisnici,
         'projects':proekti,
+        'last_project_id':last_project_id,
+        'total_donated':final_donated,
     }
     return HttpResponse(template.render(context, request))
     
