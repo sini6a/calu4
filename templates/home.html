@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div style="width: 100%; float: left; text-align: center;">
+<div style="width: 100%; float: left; text-align: center;" id="statistics">
 <h2>Statistics</h2>
 <div style="display: inline;">
     <div style="width: 50%; float: left">
@@ -15,7 +15,31 @@
 </div>
 </div>
 
-<div style="width: 100%; float: left; text-align: center;">
+<table><tr><td></td></tr></table>
+<hr>
+
+<table style="width:100%;">
+    <tr>
+        {% for item in project_list %}
+        <td class="td-project">
+                    <h3>{{ item }}</h3>
+            <p>{{ item.project_Date }}</p>
+        </div>
+        <div style="margin: 5px; padding: 5px; text-align: left;">
+            <p>Project Location: {{ item.project_Location }}</p>    
+            <p>Project Goal: {{ item.project_Goal }}$</p>
+            <p>Project Reach: {{ item.project_Reach }}$</p>
+            <form action="/projects/{{ item.project_id }}">
+                <center><input type="submit" value="Donate"></center>
+            </form>
+        </td>
+        {% endfor %}
+    </tr>
+</table>
+
+
+<!--
+<div style="width: 100%; float: left; text-align: center;" id="projects">
 <h2>Projects</h2>
   {% for item in project_list %}
   <center><div style="width: 31.33%; float:left; border: 1px solid; margin: 1%; border-color: green; ">
@@ -34,9 +58,12 @@
   </div></center>
   {% endfor %}
 </div>
+-->
 
+<table><tr><td></td></tr></table>
+<hr>
 
-<div style="width: 100%; float: left;">  
+<div style="width: 100%; float: left;" id="donations">  
 <h2>Donations</h2>
   <table style="">
     <table style="float: left; width: 33.33%; padding: 20px;">

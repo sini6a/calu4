@@ -25,7 +25,8 @@ SECRET_KEY = 'nn()9!s@s*6v#sye8xu69g0xj)27e_!0^b2=08nh_y4)ha=r5$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+]
 
 
 # Application definition
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'projects.apps.ProjectConfig',
     'core.apps.CoreConfig',
+    'social_django',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'AirPollutionApp.urls'
@@ -65,6 +69,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -107,6 +114,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -126,4 +141,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
+
+SOCIAL_AUTH_GITHUB_KEY = 'cc3cf580791862799c5e'
+SOCIAL_AUTH_GITHUB_SECRET = '77f9c8396e84d2b6fc576654c15fca9e609d4054'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '154578155357542'
+SOCIAL_AUTH_FACEBOOK_SECRET = '1e595faf77f1ed214d38bbc2cd265c55'
+
+ACCOUNT_EMAIL_REQUIRED = True

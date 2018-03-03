@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <h1>General</h1>
+    <p style="padding-left: 15px;padding-right: 15px;">Air pollution has become a major problem for our society. Nuclear power plants, cars and factories are producing a lot of harmful gases. It is time to turn to more environmental-friendly energy producers like windmills and solar panels. Trees should be planted to clean the environment from CO2  and to raise the level of oxygen. We must be friends with the environment because there is only one planet we can live on. We should help the planet to renew itself to bring balance back to the Earth. If one person does small change in his life it won’t make a difference for the environment, but if we all do small changes in our lives, we still could save our planet while we still have time. Join us in our mission by donating money or just supporting our campaign. </p>
+<hr><br>
+    
+<h1>Our Goal</h1>
+<table style="width: 100%;">
+    <tr>
+        <td id="td-style">
+        <img src="{% static 'images/about/trees-icon.png' %}" style="margin:auto; display:block;">
+        <h2>Planting Trees</h2>
+        </td>
+        <td id="td-style">
+        <img src="{% static 'images/about/windmill-icon.png' %}" style="margin:auto; display:block;">
+        <h2>Building Windmills</h2>
+        </td>
+        <td id="td-style">
+        <img src="{% static 'images/about/solarpanels-icon.png' %}" style="margin:auto; display:block;">
+        <h2>Donating Solar Panels</h2>
+        </td>
+    </tr>
+</table>
+<hr>
+
+<table style="padding: 20px;">
+    <tr>
+        <td class="table-picture"><img class="about-img" src="{% static 'images/about/tree-500.jpg' %}"></td>
+        <td class="table-text"><h1>Trees</h1>
+            <p style="text-indent: 50px; padding-right: 50px;">Trees alter the environment we live in by moderating climate, improving air quality, reducing stormwater runoff, and harboring wildlife. They moderate temperatures by creating a cooling effect which can counteract the heating effect of pavement and buildings in an urban environment. Planting a tree is a lifelong investment. How well this investment grows depends on the type of tree selected and the planting location. They have economic, environmental, social and communal benefits too. If you decide to donate money to us, you can have a tree which carries your name and share this experience with your friends.</p>
+        </td>
+    </tr>
+</table>
+<hr>
+<table style="padding: 20px;">
+    <tr>
+        <td class="table-text"><h1>Windmills</h1>
+            <p style="text-indent: 50px; padding-left: 50px;">Windmills were first used to pump water for farms and ranches, and later to generate electricity for homes and industry. They allow us to harness the power of the wind and turn it into energy. Wind energy is now the world's fastest-growing energy source and will continued to be used for generations to come.</p>
+        </td>
+        <td class="table-picture"><img class="about-img" src="{% static 'images/about/windmill-500.jpg' %}"></td>
+    </tr>
+</table>
+<hr>
+<table style="padding: 20px;">
+    <tr>
+        <td class="table-picture"><img class="about-img" src="{% static 'images/about/solarpanels-500.jpg' %}"></td>
+        <td class="table-text"><h1>Solar Panels</h1>
+            <p style="text-indent: 50px; padding-right: 50px;">Solar panel electricity systems, also known as photovoltaics (PV), capture the sun's energy using photovoltaic cells. The cells convert the sunlight into electricity, which can be used to run household appliances and lighting. Cutting your electricity bislls and your carbon footprint are some of the benefits of solar panels. Also if you generate energy more than you need, you can give it to the city and get paid.</p>
+        </td>
+    </tr>
+</table>
+<hr>
+
+<table style="padding: 20px; width: 100%;">
+    <tr>
+        <td style="text-align: center;" class="td-contact">
+            <h2>Contact</h2>
+            <p>Mobile phone: 837483259325</p>
+            <p>Address: Ul. Fdudnd S.</p>
+            <p>E-mail: someone@gmail.com</p>
+        </td>
+        <td class="td-contact" id="map" style="min-height: 200px;">
+            <script>
+            function myMap() {
+            var mapCanvas = document.getElementById("map");
+            var myCenter = new google.maps.LatLng(42.003662, 21.411993); 
+            var mapOptions = {center: myCenter, zoom: 15};
+            var map = new google.maps.Map(mapCanvas,mapOptions);
+            var marker = new google.maps.Marker({
+            position: myCenter
+            });
+            marker.setMap(map);
+            }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7OtQBJEJt9-YmwJXgULEf7j8PUriYSxU&callback=myMap"></script>
+        </td>
+    </tr>
+
+</table>
+
+
+
+{% endblock %}

@@ -24,10 +24,12 @@ urlpatterns = [
 #r'^$', views.index, name='index'
 #    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^$', projects_views.index, name='home'),
+    url(r'^about/', projects_views.about, name='about'),
     url(r'^admin/', admin.site.urls),
     url(r'^projects/', include('projects.urls')),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
     url(r'^signup/$', core_views.signup, name='signup'),
 ]
 

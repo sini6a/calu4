@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
-  <h2>Log in to My Site</h2>
+  <h2>Log in:</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
 
-<div class="row">
-  <form method="post">
+  <center><div style="">
+<form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
     {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
+      <p style="">
+        {{ field.label_tag }}
         {{ field }}<br>
         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>
@@ -26,5 +27,8 @@
     <button type="submit" class="waves-effect waves-light btn">Log in</button>
     <a href="{% url 'signup' %}" class="waves-effect waves-light btn">Sign up</a>
   </form>
-</div>
+    <br>
+  <p><strong>-- OR --</strong></p>
+  <a href="{% url 'social:begin' 'github' %}"><img src="{% static 'images/gh-button.png' %}" style="height: 30px; width:auto;"></a><br>
+</div></center>
 {% endblock %}

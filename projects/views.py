@@ -77,3 +77,6 @@ def project(request, project_id):
     
 def thankyou(request):
     return render(request, 'thank_you.html')    
+    
+def about(request):
+    return render(request, 'about.html')   
