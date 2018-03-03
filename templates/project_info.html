@@ -27,25 +27,25 @@
 
         <h3>{{ project_list.project_Name }}</h3>
         <div style="">
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Date:</p>
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Date }}</p>
+            <p style="float:left; width: 50%; border-color: green;">Date:</p>
+            <p style="float:left; width: 50%; border-color: green;">{{ project_list.project_Date }}</p>
         </div>
 
         <div style="">
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Project Location:</p>
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Location }}</p>
+            <p style="float:left; width: 50%; border-color: green;">Project Location:</p>
+            <p style="float:left; width: 50%;border-color: green;">{{ project_list.project_Location }}</p>
         </div>
         <div style="">
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Project Goal:</p>
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Goal }}</p>
+            <p style="float:left; width: 50%; border-color: green;">Project Goal:</p>
+            <p style="float:left; width: 50%; border-color: green;">{{ project_list.project_Goal }}</p>
         </div>
         <div style="">
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">Project Reach:</p>
-            <p style="float:left; width: 50%;border-bottom: 1px dashed;border-color: green;">{{ project_list.project_Reach }}</p>
+            <p style="float:left; width: 50%; border-color: green;">Project Reach:</p>
+            <p style="float:left; width: 50%;border-color: green;">{{ project_list.project_Reach }}</p>
         </div>
         <div style="">
-            <p style="float:left; width: 50%;border-bottom: 1px dashed;border-color: green;">Project Info:</p>
-            <p style="float:left; width: 50%;border-bottom: 1px dashed; border-color: green;">{{ project_list.project_Info }}</p>
+            <p style="float:left; width: 50%;border-color: green;">Project Info:</p>
+            <p style="float:left; width: 50%; border-color: green;">{{ project_list.project_Info }}</p>
         </div>
         {% if user.is_authenticated %}
         {% if project_list.project_Reach < project_list.project_Goal %}
